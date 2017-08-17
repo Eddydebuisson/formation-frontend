@@ -15,5 +15,5 @@ var paul = new Personne("LEMAIRE","paul","paul44");
 console.log(jules.nom);
 console.log(jules.prenom);
 console.log(jules.speudo);
-console.log(jules.getNomComplet);
+jules.getNomComplet();
 
