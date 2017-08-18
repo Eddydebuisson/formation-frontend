@@ -2,6 +2,8 @@ const readline = require('readline');
 
 var service = require('./service.js');
 
+
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -9,10 +11,15 @@ const rl = readline.createInterface({
 });
 
 
+var OptionMenu = [service.listePresentateur.presentateur, service.listeTopPresentateur.topPresentateur,service.listeSession.session,service.sessionId.session];
+
 rl.prompt();
 
 rl.on('line', (line) => {
-  switch (line.trim()) {
+
+   // OptionMenu[parseInt(line)+1](); Todo: utilisée un option menu
+
+      switch (line.trim()) {
     case '1':
       console.log(service.listePresentateur.presentateur().map(function(presentateur){
           return presentateur.firstname+" "+presentateur.lastname;
@@ -25,10 +32,8 @@ rl.on('line', (line) => {
       break;
     case '4':
     rl.question("Veuillez saisir l'id de la session ", (answer) => {
-        
         console.log(service.sessionId.session(answer));
         });
-        rl.prompt();
       break;
     case '2':
       console.log(service.listeTopPresentateur.topPresentateur().map(function(presentateur){
@@ -44,3 +49,5 @@ rl.on('line', (line) => {
   console.log("Merci d'avoir utilisée nos service !");
   process.exit(0);
 });
+
+
