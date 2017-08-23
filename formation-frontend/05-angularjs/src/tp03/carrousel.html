@@ -4,12 +4,12 @@
 
 
 
-<div ng-controller="CarrouselCtrl">
+<div ng-controller="CarrouselCtrl as ctlr">
 
-    <button ng-click="previous()" ><<</button>
-    <button ng-click="next()">>></button>
-    <p>{{images[currentId].name}}</p>
-    <img src="{{images[currentId].url}}"></img>
+    <button ng-click="ctlr.previous()" ><<</button>
+    <button ng-click="ctlr.next()">>></button>
+    <p>{{ctlr.images[ctlr.currentId].name}}</p>
+    <img src="{{ctlr.images[ctlr.currentId].url}}" height="250 px"></img>
 </div>
 
 
