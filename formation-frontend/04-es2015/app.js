@@ -109,7 +109,7 @@ findByName(tripName) {
         setTimeout(()=> {
             let found; 
             this.trips.forEach((t)=>{
-                if (t.id=== tripName) {
+                if (t.id === tripName) {
                     found= t;
                 }else{
                     reject( "No trip with name "+tripName);
@@ -126,20 +126,18 @@ findByName(tripName) {
 
 class PriceService {
 constructor() {
-    this.mapper = new Map(['paris',100],['rio-de-janeiro',800],['nantes']);
+    this.mapper = new Map([['paris',100],['rio-de-janeiro',800],['nantes']]);
 }
 
 findPriceByTripId(tripId) {
         return new Promise( (resolve, reject) => {
         setTimeout(()=> {
-            let found; 
-            this.mapper.forEach((cle,valeur)=>{
-                if (cle  === tripId) {
-                    found= valeur;
+                let found = this.mapper.get(tripId);
+                if(found){
+                    resolve(found);
                 }else{
-                    reject( "No trip with name "+tripName);
+                    reject("No price for trip id "+tripId);
                 }
-            })
             resolve(found);
         }, 2000);
     });
@@ -152,7 +150,7 @@ findPriceByTripId(tripId) {
 
 const tripService = new TripService();
 
-const prom = tripService.findByName('toto');
+const prom = tripService.findByName('paris');
 
 prom.then(trip =>{
     console.log(trip.toString())
@@ -160,12 +158,15 @@ prom.then(trip =>{
     console.log(reject);
 });
 
+
+
 const priceService = new PriceService();
 
-const promTwo = priceService.findPriceByTripId('paris');
+const promTwo = priceService.findPriceByTripId('rio-de-janeiro');
 
 promTwo.then( serv =>{
     console.log(serv)
 },(reject)=>{
     console.log(reject);
 })
+
