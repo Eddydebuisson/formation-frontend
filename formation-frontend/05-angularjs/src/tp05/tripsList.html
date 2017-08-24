@@ -5,7 +5,7 @@
     <div ng-repeat=" ville in ctrl.villes">
     <input ng-model="ville.name"> 
     <input ng-model="ville.prix"> 
-    <button ng-disabled="!ville.prix" ng-click="ctrl.save(ville)">Save</button></br>
+    <button ng-disabled="!ville.prix || !ville.name" ng-click="ctrl.save(ville)">Save</button></br>
     <img src = '{{ville.imageUrl}}' >
     </div>
 </ul>
