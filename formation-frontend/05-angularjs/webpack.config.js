@@ -32,13 +32,13 @@ module.exports = {
                 query: {
                     presets: [['env', {
                         modules: false,
-                        targets: {browsers: ["last 2 versions"]}
+                        targets: { browsers: ["last 2 versions"] }
                     }]]
                 }
             },
-            { test: /\.(css)$/, use: ['style-loader', 'css-loader']},
-            { test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, use: 'file-loader?name=fonts/[name].[ext]'},
-            { test: /\.html$/, exclude: [/node_modules/], use: 'raw-loader'},
+            { test: /\.(css)$/, use: ['style-loader', 'css-loader'] },
+            { test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, use: 'file-loader?name=fonts/[name].[ext]' },
+            { test: /\.html$/, exclude: [/node_modules/], use: 'raw-loader' },
 
         ]
     }
