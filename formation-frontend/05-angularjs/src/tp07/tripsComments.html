@@ -1,0 +1,24 @@
+<section id="tp07">
+<h1>TP 07 - Services</h1>
+
+
+<div ng-controller="CommentController as ctrl">   
+<select ng-model="ctrl.id" ng-change="ctrl.jaiChange()">
+    <option  ng-repeat=" v in ctrl.trips" ng-value="v.id"> {{v.name}}</option>
+</select>
+<br></br>
+<img ng-src="{{s.imageUrl}}" ng-repeat="s in ctrl.steps.steps">
+
+    <ul>
+    <li ng-repeat=" c in ctrl.comments.comments">{{c.id}} {{c.text}}</li>
+    </ul>
+<textarea rows="3" cols="75" ng-model="ctrl.comment"></textarea>
+<button  ng-click="ctrl.save( ctrl.id,ctrl.comment)">Save</button>
+
+
+</div>
+
+
+
+
+</section>

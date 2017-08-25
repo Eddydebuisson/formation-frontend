@@ -17,6 +17,8 @@ import tplTp05 from './tp05/tripsList.html'
 
 import tplTp06 from './tp06/tripsListDetails.html'
 
+import tplTp07 from './tp07/tripsComments.html'
+
 import CarrouselCtrl from './tp03/carrousel.controller'
 
 import formController from './tp04/forms.controller.js'
@@ -25,11 +27,28 @@ import HttpController from './tp05/tripsList.controller.js'
 
 import RessourceController from './tp06/tripsListDetails.controller.js'
 
+import CommentController from './tp07/tripsComments.controller.js'
+
+import apiUrls from './tp07/apiUrls.service.js'
+
+import TripsService from './tp07/trips.service.js'
+
+import CommentsService from './tp07/comments.service.js'
+
+import StepsService from './tp07/steps.service.js'
 
 import css from './tp04/forms.css'
 
 
 // insertion du code HTML dans le corps de la page principale
-document.querySelector('body').innerHTML = [tplTp01,tplTp02,tplTp03,tplTp04,tplTp05,tplTp06].join('<hr>')
-
-angular.module('tripApp', ['ngResource']).controller(CarrouselCtrl.name, CarrouselCtrl).controller(formController.name, formController).controller(HttpController.name,HttpController).controller(RessourceController.name,RessourceController)
+//document.querySelector('body').innerHTML = [tplTp01,tplTp02,tplTp03,tplTp04,tplTp05,tplTp06,tplTp07].join('<hr>')
+document.querySelector('body').innerHTML = [tplTp07].join('<hr>')
+angular.module('tripApp', ['ngResource']).controller(CarrouselCtrl.name, CarrouselCtrl)
+                                         .controller(formController.name, formController)
+                                         .controller(HttpController.name,HttpController)
+                                         .controller(RessourceController.name,RessourceController)
+                                         .controller(CommentController.name,CommentController)
+                                         .constant('apiUrl',apiUrls)
+                                         .service('TripsService',TripsService)
+                                         .service('StepsService',StepsService)
+                                         .factory('CommentsService',CommentsService)
