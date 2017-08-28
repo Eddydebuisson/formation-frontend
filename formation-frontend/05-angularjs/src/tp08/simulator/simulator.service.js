@@ -1,17 +1,22 @@
 export default class SimulatorService {
-   
-    constructor(RaceService,$interval){
+
+    constructor(RaceService, $interval) {
         this.raceService = RaceService;
         this.walkers = this.raceService.list();
-         $interval(() => this.start(), 1000)
+        this.$interval = $interval;
+
     }
 
     start() {
-        //this.raceService.update('Paul',10)
-        this.walkers().forEach( w => this.raceService.update(w.name,this.RaceService.update(w.name, Math.floor(Math.random() * (max-min)) + min) )
+        let run = this.$interval(() => {
+            let max = 30;
+            let min = 0;
 
-        )
+            this.walkers.forEach(w => this.raceService.update(w.name, Math.floor(Math.random() * (max - min)) + min));
+            if (this.walkers.find(w => w.progress >= 100)) {
+                this.$interval.cancel(run);
+            }
+        }, 1000)
+    }
 
-
-}
 }

@@ -11,6 +11,6 @@ export default class RaceController{
     start(){
         this.simulatorService.start();
     }
-
+    
 
 }
